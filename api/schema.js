@@ -16,6 +16,10 @@ const {
   makeExecutableSchema,
   addSchemaLevelResolveFunction,
 } = require('graphql-tools');
+
+
+
+
 const debug = require('debug')('api:resolvers');
 const logExecutions = require('graphql-log')({
   logger: debug,
@@ -181,6 +185,15 @@ const schema = makeExecutableSchema({
       }
     : {},
 });
+
+
+
+//addSchemaLevelResolveFunction adds a function to the schema that will be
+//EXECUTED BEFORE OTHER RESOLVERS, but only ONCE PER REQUEST!
+
+//It's useful for authentication, because you would be checking privileges each time that the client executes a query.
+
+//In this example, we're just checking if our app is on maintenance mode. And if true, we will throw a error meassage!
 
 if (process.env.REACT_APP_MAINTENANCE_MODE === 'enabled') {
   console.error('\n\n⚠️ ----MAINTENANCE MODE ENABLED----⚠️\n\n');
