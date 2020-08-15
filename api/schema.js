@@ -1,7 +1,17 @@
+
+
 // @flow
 /**
  * The combined schema out of types and resolvers (queries, mutations and subscriptions)
  */
+
+
+
+//The graphql-tools library enables the creation and manipulation of GraphQL schema. 
+
+//Apollo Server is able to accept a schema that has been enabled by graphql-tools.
+//Apollo server directly exports all the function from graphql-tools,
+//enabling a migration path for more complicated use cases.
 const {
   makeExecutableSchema,
   addSchemaLevelResolveFunction,
